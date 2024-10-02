@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const connectDB = require("./db/mongodb");
+const cors = require("cors");
 const {
 	errorHandler,
 	notFound,
@@ -9,6 +10,11 @@ const router = require("./routes/routes");
 require("dotenv").config();
 
 app.use(express.json());
+app.use(
+	cors({
+		origin: "*",
+	})
+);
 
 app.use("/api/v1/", router);
 
